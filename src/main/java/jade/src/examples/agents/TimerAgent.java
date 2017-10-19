@@ -24,7 +24,7 @@ public class TimerAgent extends Agent{
                 msg.setLanguage("German");
                 msg.setOntology("Klopf Klopf");
                 msg.setContent("Essen ist daaaa!!");
-                send(msg);
+                myAgent.send(msg);
             }
         });
     }

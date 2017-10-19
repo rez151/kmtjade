@@ -12,17 +12,19 @@ public class MultiplexerAgent extends Agent{
 
     @Override
     protected void setup() {
-        System.out.println("Hallo Multiplexer " + getAID().getName() + " meldet sich zum Dienst!!!");
+        System.out.println("Hallo Multiplexer " + getAID().getLocalName() + " meldet sich zum Dienst!!!");
 
         addBehaviour(new CyclicBehaviour() {
             @Override
             public void action() {
                 ACLMessage msg = receive();
                 if (msg != null) {
+                    msg.setContent(msg.getContent());
                     msg.clearAllReceiver();
+                    msg.setSender(myAgent.getAID());
                     msg.addReceiver(new AID("Receiver1", AID.ISLOCALNAME));
                     msg.addReceiver(new AID("Receiver2", AID.ISLOCALNAME));
-                    send(msg);
+                    myAgent.send(msg);
                 }
             }
         });

@@ -10,7 +10,7 @@ import jade.lang.acl.ACLMessage;
 public class BlockReceiveAgent extends Agent {
     @Override
     protected void setup() {
-        System.out.println("Hallo BlockReceiveAgent " + getAID().getName() + " meldet sich zum Dienst!!!");
+        System.out.println("Hallo BlockReceiveAgent " + getAID().getLocalName() + " meldet sich zum Dienst!!!");
 
         addBehaviour(new CyclicBehaviour() {
             @Override
